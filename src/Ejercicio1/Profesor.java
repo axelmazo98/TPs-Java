@@ -32,7 +32,11 @@ public class Profesor extends Empleado{
 	public void setAntiguedad(int antiguedad) {
 		this.antiguedad = antiguedad;
 	}
-	
+
+	@Override
+	public String toString() {
+		return super.toString() + " cargo=" + cargo + ", antiguedad=" + antiguedad + "]";
+	}
 	
 	
 	
