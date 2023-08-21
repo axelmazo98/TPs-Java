@@ -14,6 +14,26 @@ public class Profesor extends Empleado{
 		this.cargo = cargo;
 		this.antiguedad = antiguedad;
 	}
+
+	
+	//Gets y Sets
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+
+	public int getAntiguedad() {
+		return antiguedad;
+	}
+
+	public void setAntiguedad(int antiguedad) {
+		this.antiguedad = antiguedad;
+	}
+	
+	
 	
 	
 	
