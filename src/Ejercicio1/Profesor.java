@@ -1,16 +1,16 @@
 package Ejercicio1;
 
-public class Profesor extends Empleado{
+public class Profesor extends Empleado implements Comparable <Profesor> {
 	
 	private String cargo;
 	private int antiguedad;
 
 	public Profesor() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
-	public Profesor(String cargo, int antiguedad) {
-		super();
+	public Profesor(String Nombre, int edad, String cargo, int antiguedad) {
+		super(Nombre, edad);
 		this.cargo = cargo;
 		this.antiguedad = antiguedad;
 	}
@@ -37,6 +37,22 @@ public class Profesor extends Empleado{
 	public String toString() {
 		return super.toString() + " cargo=" + cargo + ", antiguedad=" + antiguedad + "]";
 	}
+
+	@Override
+	public int compareTo(Profesor arg0) {
+		
+		//ORDENAMIENTO por Años de antiguedad de Menor a Mayor
+		if(arg0.antiguedad == this.antiguedad)
+			return 0;
+		
+		if (arg0.antiguedad<this.antiguedad)
+		{
+			return 1;
+		}		
+		return -1;
+		
+	}
+
 	
 	
 	
