@@ -19,6 +19,18 @@ public class mainEjercicio1_b {
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
+        
+        Profesor p1 = new Profesor("Juan",45,"Ayudante",2);
+        Profesor p2 = new Profesor("Juan",45,"Ayudante",2);
+        
+        if(p1.equals(p2)) {
+        	System.out.println("Son la misma Persona");
+        }
+        else {
+        	System.out.println("Son diferentes Personas");
+        }
 	}
+	
+	
 
 }
