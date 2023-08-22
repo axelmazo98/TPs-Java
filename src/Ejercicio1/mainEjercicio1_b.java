@@ -21,7 +21,7 @@ public class mainEjercicio1_b {
         }
         
         Profesor p1 = new Profesor("Juan",45,"Ayudante",2);
-        Profesor p2 = new Profesor("Juan",45,"Ayudante",2);
+        Profesor p2 = new Profesor("Juan",43,"Ayudante",2);
         
         if(p1.equals(p2)) {
         	System.out.println("Son la misma Persona");

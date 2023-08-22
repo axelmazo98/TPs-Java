@@ -43,6 +43,7 @@ public class Profesor extends Empleado implements Comparable <Profesor> {
 		result = prime * result + ((cargo == null) ? 0 : cargo.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -53,6 +54,13 @@ public class Profesor extends Empleado implements Comparable <Profesor> {
 			return false;
 		Profesor other = (Profesor) obj;
 		if (antiguedad != other.antiguedad)
+			return false;
+		if (this.getEdad() != other.getEdad())
+			return false;
+		if (this.getNombre() == null) {
+			if (other.getNombre() != null)
+				return false;
+		} else if (!this.getNombre().equals(other.getNombre()))
 			return false;
 		if (cargo == null) {
 			if (other.cargo != null)
