@@ -6,6 +6,15 @@ public class Producto {
 	private Date fechaCaducidad;
 	private int numeroLote;
 	
+	private Producto(){
+		
+	}
+	
+	private Producto(Date fecha, int numLote){
+		this.fechaCaducidad = fecha;
+		this.numeroLote = numLote;
+	}
+	
 	public Date getFechaCaducidad() {
 		return fechaCaducidad;
 	}
