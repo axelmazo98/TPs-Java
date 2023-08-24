@@ -1,6 +1,7 @@
 package Ejercicio3;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class mainEjercicio3 {
 
@@ -15,7 +16,11 @@ public class mainEjercicio3 {
 		lista.add(new EdificioOficinas(100,1));
 		lista.add(new EdificioOficinas(200,2));
 		
+		ListIterator<IEdificio> iterator = lista.listIterator();
 		
+		while(iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
 	}
 
 }
