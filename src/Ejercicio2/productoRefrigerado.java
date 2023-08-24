@@ -22,7 +22,11 @@ public class productoRefrigerado extends Producto {
 	public void setCodOrganismo(int codOrganismo) {
 		this.codOrganismo = codOrganismo;
 	}
-	
+
+	@Override
+	public String toString() {
+		return super.toString() + "Código Organismo: " + codOrganismo;
+	}
 	
 }
 
