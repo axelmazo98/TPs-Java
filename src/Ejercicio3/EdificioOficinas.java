@@ -5,6 +5,17 @@ public class EdificioOficinas implements IEdificio {
     private int numeroOficinas;
     private double superficie;
     
+    
+    public EdificioOficinas() {
+    	this.numeroOficinas=0;
+    	this.superficie=0;
+    }
+    
+    public EdificioOficinas(int numeroOficinas,double superficie) {
+    	this.numeroOficinas= numeroOficinas;
+    	this.superficie= superficie;
+    }
+    
     public double getSuperficie() {
 		return superficie;
 	}
