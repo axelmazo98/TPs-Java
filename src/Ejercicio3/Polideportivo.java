@@ -5,6 +5,16 @@ public class Polideportivo implements IEdificio, IInstalacionDeportiva {
 	private String nombre;
 	private double superficie;
 	
+	public Polideportivo() {
+		nombre = "Sin nombre";
+		superficie = 0;
+	}
+	
+	public Polideportivo(String nombre, double superficie) {
+		this.nombre = nombre;
+		this.superficie = superficie;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
