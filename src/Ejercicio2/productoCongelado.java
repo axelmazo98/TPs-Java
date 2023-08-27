@@ -23,9 +23,11 @@ public class productoCongelado extends Producto{
 	public void setTempCongelacionRecomendada(int tempCongelacionRecomendada) {
 		this.tempCongelacionRecomendada = tempCongelacionRecomendada;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return super.toString() + "Temperatura congelación reomendada:" + tempCongelacionRecomendada;
+	}
 
 }
 
