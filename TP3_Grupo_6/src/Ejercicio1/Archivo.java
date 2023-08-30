@@ -1,8 +1,23 @@
 package Ejercicio1;
 
+import java.io.File;
+
 public class Archivo {
 	private String ruta;
 
+	public boolean existe() {
+		
+		File archivo = new File(ruta);
+		
+		if (archivo.exists()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+	
 	///constructores
 	public Archivo() {
 		this.ruta = "";
