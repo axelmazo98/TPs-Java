@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.TreeSet;
 
 public class Archivo {
 	private String ruta;
@@ -72,6 +73,7 @@ public class Archivo {
 	
 	public void leerLineas() {
 		FileReader entrada;
+	
 		try {
 			entrada = new FileReader(ruta);
 			BufferedReader miBuffer = new BufferedReader(entrada);
@@ -80,6 +82,8 @@ public class Archivo {
 			while (linea != null) {
 				System.out.println(linea);
 				linea = miBuffer.readLine();
+				
+				
 			}
 			miBuffer.close();
 			entrada.close();
@@ -87,6 +91,52 @@ public class Archivo {
 		} catch (IOException e) {
 			System.out.println("No se encontro el archivo");
 		}
+	}
+	
+	public TreeSet<Persona> leerPersonas(){
+		
+		TreeSet<Persona> listaPersonas= new TreeSet<Persona>();		
+		
+		try {
+			FileReader fr= new FileReader(ruta);
+			BufferedReader buffer= new BufferedReader(fr);
+			
+			String nombre;
+			String apellido;
+			int dni;
+			String linea=buffer.readLine();
+			
+			while(linea != null) {
+					
+				String[] separador=linea.split("-");
+				Persona persona= new Persona();
+								
+				if(separador.length==3) {
+				persona.setNombre(separador[0]);
+				persona.setApellido(separador[1]);
+				persona.setDNI(separador[2]);
+			
+				if(!Persona.validarDNI(separador[2])){
+				
+					listaPersonas.add(persona);
+				}
+				}
+				
+				linea= buffer.readLine();		
+			}
+				buffer.close();
+				fr.close();
+			
+				return listaPersonas;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return listaPersonas;
+		
+		
+		
 	}
 
 }

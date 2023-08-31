@@ -1,10 +1,10 @@
 package Ejercicio1;
 
-public class Persona {
+public class Persona implements Comparable<Persona> {
 
 	private String Nombre;
 	private String Apellido;
-	private int DNI;
+	private String DNI;
 	
 	///constructores
 	
@@ -13,10 +13,10 @@ public class Persona {
 		super();
 		Nombre = "";
 		Apellido = "";
-		DNI = 0;
+		DNI = "";
 	}
 	
-	public Persona (String nombre, String apellido, int dNI) {
+	public Persona (String nombre, String apellido, String dNI) {
 		
 		super();
 		Nombre = nombre;
@@ -37,10 +37,10 @@ public class Persona {
 	public void setApellido(String apellido) {
 		Apellido = apellido;
 	}
-	public int getDNI() {
+	public String getDNI() {
 		return DNI;
 	}
-	public void setDNI(int dNI) {
+	public void setDNI(String dNI) {
 		DNI = dNI;
 	}
 	
@@ -54,16 +54,22 @@ public class Persona {
 			}
 		}
 		
-		if(tieneLetra) {
+		/*if(tieneLetra) {
 			DNIinvalido exc1 = new DNIinvalido();
         	throw exc1;
 		}
-		
+		*/
 		return tieneLetra;
 	}
 	@Override
 	public String toString() {
 		return "Persona [Nombre=" + Nombre + ", Apellido=" + Apellido + ", DNI=" + DNI + "]";
+	}
+
+	@Override
+	public int compareTo(Persona o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	
