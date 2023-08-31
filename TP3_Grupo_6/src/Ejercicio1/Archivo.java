@@ -1,7 +1,9 @@
 package Ejercicio1;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -65,6 +67,25 @@ public class Archivo {
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("No se pudo escribir la línea");
+		}
+	}
+	
+	public void leerLineas() {
+		FileReader entrada;
+		try {
+			entrada = new FileReader(ruta);
+			BufferedReader miBuffer = new BufferedReader(entrada);
+			
+		   String linea = "";
+			while (linea != null) {
+				System.out.println(linea);
+				linea = miBuffer.readLine();
+			}
+			miBuffer.close();
+			entrada.close();
+
+		} catch (IOException e) {
+			System.out.println("No se encontro el archivo");
 		}
 	}
 
