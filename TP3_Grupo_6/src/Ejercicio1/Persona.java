@@ -1,5 +1,7 @@
 package Ejercicio1;
 
+import java.util.Objects;
+
 public class Persona implements Comparable<Persona> {
 
 	private String Nombre;
@@ -69,7 +71,28 @@ public class Persona implements Comparable<Persona> {
 	@Override
 	public int compareTo(Persona o) {
 		// TODO Auto-generated method stub
-		return 0;
+		int comparacionApellido = this.Apellido.compareTo(o.Apellido);
+        if (comparacionApellido != 0) {
+            return comparacionApellido;
+        }
+        return this.Nombre.compareTo(o.Nombre);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(Apellido, Nombre);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Persona other = (Persona) obj;
+		return Objects.equals(Apellido, other.Apellido) && Objects.equals(Nombre, other.Nombre);
 	}
 	
 	

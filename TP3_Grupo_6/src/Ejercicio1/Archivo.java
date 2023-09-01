@@ -101,9 +101,6 @@ public class Archivo {
 			FileReader fr= new FileReader(ruta);
 			BufferedReader buffer= new BufferedReader(fr);
 			
-			String nombre;
-			String apellido;
-			int dni;
 			String linea=buffer.readLine();
 			
 			while(linea != null) {
@@ -112,14 +109,10 @@ public class Archivo {
 				Persona persona= new Persona();
 								
 				if(separador.length==3) {
-				persona.setNombre(separador[0]);
-				persona.setApellido(separador[1]);
-				persona.setDNI(separador[2]);
-			
-				if(!Persona.validarDNI(separador[2])){
-				
+					persona.setNombre(separador[0]);
+					persona.setApellido(separador[1]);
+					persona.setDNI(separador[2]);
 					listaPersonas.add(persona);
-				}
 				}
 				
 				linea= buffer.readLine();		
@@ -127,15 +120,46 @@ public class Archivo {
 				buffer.close();
 				fr.close();
 			
-				return listaPersonas;
-			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+		
 		return listaPersonas;
+	}
+	
+	public TreeSet<Persona> ResultadoValidarDniList() {
 		
+		TreeSet<Persona> pListPersonas = leerPersonas();
+		TreeSet<Persona> pListResulTreeSet = new TreeSet<Persona>();
+		for (Persona persona : pListPersonas) {
+			try {
+				if(!Persona.validarDNI(persona.getDNI())) {
+					pListResulTreeSet.add(persona);
+				}
+			} catch (DNIinvalido e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return pListResulTreeSet;
+	}
+	
+	public void GuardarEnArchivoResultado() {
+		Archivo archivo =  new Archivo("Resultado.txt");
+		if(!archivo.existe()) {
+			archivo.crearArchivo();
+			TreeSet<Persona> plistPersonas = ResultadoValidarDniList();
+		for (Persona persona : plistPersonas) {
+			String nombre = persona.getNombre();
+			String apellido = persona.getApellido();
+			String dni = persona.getDNI();
+			String lineaString = nombre+"-"+apellido+"-"+dni+"\n";
+			
+			archivo.escribirLineas(lineaString);
+		}
 		
+		}
 		
 	}
 
