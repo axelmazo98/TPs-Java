@@ -64,7 +64,7 @@ public class Main extends JFrame{
 		JButton btnEjercicio2 = new JButton("Ejercicio 2");
 		btnEjercicio2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				///Ejercicio2 ej2 = new Ejercicio2();
+				Ejercicio2 ej2 = new Ejercicio2();
 			}
 		});
 		btnEjercicio2.setBounds(157, 132, 116, 23);
@@ -73,7 +73,7 @@ public class Main extends JFrame{
 		JButton btnEjercicio3 = new JButton("Ejercicio 3");
 		btnEjercicio3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				///Ejercicio3 ej3 = new Ejercicio3();
+				Ejercicio3 ej3 = new Ejercicio3();
 			}
 		});
 		btnEjercicio3.setBounds(157, 166, 116, 23);

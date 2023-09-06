@@ -13,6 +13,7 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JCheckBox;
 
 
 public class Ejercicio3 extends JFrame{
@@ -73,5 +74,29 @@ public class Ejercicio3 extends JFrame{
 		grupo.add(radio2);
 		grupo.add(radio3);
 		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_1.setBounds(10, 90, 414, 104);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel lblEspecialidad = new JLabel("Elije una especialidad");
+		lblEspecialidad.setBounds(28, 41, 138, 14);
+		panel_1.add(lblEspecialidad);
+		
+		///CHECKBOXS
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Diseño Grafico");
+		chckbxNewCheckBox.setBounds(187, 66, 97, 23);
+		panel_1.add(chckbxNewCheckBox);
+		
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Administración");
+		chckbxNewCheckBox_1.setBounds(187, 37, 97, 23);
+		panel_1.add(chckbxNewCheckBox_1);
+			
+		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Programación");
+		chckbxNewCheckBox_2.setBounds(187, 7, 97, 23);
+		panel_1.add(chckbxNewCheckBox_2);
+		
+		setVisible(true);
 	}
 }
