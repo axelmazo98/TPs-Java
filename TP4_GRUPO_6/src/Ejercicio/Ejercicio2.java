@@ -15,12 +15,15 @@ import javax.swing.JTextField;
 import javax.swing.JEditorPane;
 import javax.swing.JToolBar;
 import javax.swing.border.EtchedBorder;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class Ejercicio2 extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -67,12 +70,30 @@ public class Ejercicio2 extends JFrame {
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nota 2:");
-		lblNewLabel_1.setBounds(20, 68, 46, 14);
+		lblNewLabel_1.setBounds(21, 64, 46, 14);
 		panel.add(lblNewLabel_1);
 		
+		JLabel lblNewLabel_2 = new JLabel("Nota 3:");
+		lblNewLabel_2.setBounds(20, 88, 46, 14);
+		panel.add(lblNewLabel_2);
+		
 		textField_1 = new JTextField();
-		textField_1.setBounds(100, 65, 86, 20);
+		textField_1.setBounds(99, 60, 86, 20);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(99, 83, 86, 20);
+		panel.add(textField_2);
+		
+		JLabel lblTps = new JLabel("TPS");
+		lblTps.setBounds(20, 117, 46, 14);
+		panel.add(lblTps);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Aprobado", "Desaprobado"}));
+		comboBox.setBounds(100, 114, 86, 20);
+		panel.add(comboBox);
 	}
 }
