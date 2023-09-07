@@ -1,6 +1,8 @@
 package Ejercicio;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,9 +25,9 @@ import javax.swing.SwingConstants;
 public class Ejercicio2 extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtNota1;
+	private JTextField txtNota2;
+	private JTextField txtNota3;
 	private JTextField textField_4;
 	private JTextField textField_5;
 
@@ -68,10 +70,10 @@ public class Ejercicio2 extends JFrame {
 		lblNewLabel.setBounds(20, 40, 83, 14);
 		panel.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(100, 37, 86, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		txtNota1 = new JTextField();
+		txtNota1.setBounds(100, 37, 86, 20);
+		panel.add(txtNota1);
+		txtNota1.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nota 2:");
 		lblNewLabel_1.setBounds(21, 64, 46, 14);
@@ -81,15 +83,15 @@ public class Ejercicio2 extends JFrame {
 		lblNewLabel_2.setBounds(20, 88, 46, 14);
 		panel.add(lblNewLabel_2);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(99, 60, 86, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		txtNota2 = new JTextField();
+		txtNota2.setBounds(99, 60, 86, 20);
+		panel.add(txtNota2);
+		txtNota2.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(99, 83, 86, 20);
-		panel.add(textField_2);
+		txtNota3 = new JTextField();
+		txtNota3.setColumns(10);
+		txtNota3.setBounds(99, 83, 86, 20);
+		panel.add(txtNota3);
 		
 		JLabel lblTps = new JLabel("TPS");
 		lblTps.setBounds(20, 117, 46, 14);
@@ -124,17 +126,32 @@ public class Ejercicio2 extends JFrame {
 		textField_5.setBounds(105, 44, 86, 20);
 		panel_1.add(textField_5);
 		
-		JButton btnNewButton = new JButton("Calcular");
-		btnNewButton.setBounds(317, 72, 89, 23);
-		contentPane.add(btnNewButton);
+		JButton btnCalcular = new JButton("Calcular");
+		btnCalcular.setBounds(317, 72, 89, 23);
+		contentPane.add(btnCalcular);
 		
-		JButton btnNewButton_1 = new JButton("Nuevo");
-		btnNewButton_1.setBounds(317, 117, 89, 23);
-		contentPane.add(btnNewButton_1);
+		JButton btnNuevo = new JButton("Nuevo");
+		btnNuevo.setBounds(317, 117, 89, 23);
+		contentPane.add(btnNuevo);
 		
-		JButton btnNewButton_2 = new JButton("Salir");
-		btnNewButton_2.setBounds(317, 162, 89, 23);
-		contentPane.add(btnNewButton_2);
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.setBounds(317, 162, 89, 23);
+		contentPane.add(btnSalir);
+		
+		btnCalcular.addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {	
+				if(validarCampos()) {
+					System.out.println("COMPLETE LOS CAMPOS DE NOTAS");
+				}
+			}
+			
+		private boolean validarCampos() {
+			return txtNota1.getText().isEmpty() &&
+		           txtNota2.getText().isEmpty() &&
+		           txtNota3.getText().isEmpty();
+		   }
+		});
 		
 		setVisible(true);
 	}
