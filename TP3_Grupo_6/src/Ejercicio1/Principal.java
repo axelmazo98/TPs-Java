@@ -10,11 +10,21 @@ public class Principal {
 		
 		Archivo archivo= new Archivo();
 		archivo.setRuta("Personas.txt");
-		archivo.GuardarEnArchivoResultado();	
+		
+		TreeSet<Persona> personas= archivo.leerPersonas();
+		
+		Iterator<Persona> iterador= personas.iterator();
+		
+		System.out.println(personas.size());
+		for (Persona persona : personas) {
+			System.out.println(persona.toString());
+		}
+		
+		/*archivo.GuardarEnArchivoResultado();	
 		
 		Archivo ar2 = new Archivo();
 		ar2.setRuta("Resultado.txt");
-		ar2.leerLineas();
+		ar2.leerLineas();*/
 		
 				
 		

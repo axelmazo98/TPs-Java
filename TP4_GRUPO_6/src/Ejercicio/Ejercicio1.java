@@ -97,10 +97,15 @@ public class Ejercicio1 extends JFrame {
 		lblMostrarDatos.setBounds(68, 288, 318, 97);
 		contentPane.add(lblMostrarDatos);
 		
+		
+		
 		JButton btnMostrar = new JButton("Mostrar");
 		btnMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				lblMostrarDatos.setText(lblMostrarDatos.getText() + "\n"  +  txtNombre.getText() + " " + txtApellido.getText());
+				if(!(txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtTelefono.getText().equals("") || txtFechaNac.getText().equals(""))) {
+				lblMostrarDatos.setText(lblMostrarDatos.getText() + "\n"  +  txtNombre.getText() + " " + txtApellido.getText() +
+						" " +txtTelefono.getText() + " " + txtFechaNac.getText() );
+				}
 			}
 		});
 		btnMostrar.setBounds(252, 239, 104, 33);
