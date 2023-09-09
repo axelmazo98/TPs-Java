@@ -2,6 +2,8 @@ package Ejercicio;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,7 +13,9 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JCheckBox;
 
@@ -21,6 +25,7 @@ public class Ejercicio3 extends JFrame{
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
 
 	
 	public static void main(String[] args) {
@@ -40,7 +45,7 @@ public class Ejercicio3 extends JFrame{
 	public Ejercicio3() {
 		setTitle("Seleccion Multiple");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 310);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
@@ -86,16 +91,41 @@ public class Ejercicio3 extends JFrame{
 		
 		///CHECKBOXS
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Diseño Grafico");
-		chckbxNewCheckBox.setBounds(187, 66, 97, 23);
+		chckbxNewCheckBox.setBounds(187, 66, 131, 23);
 		panel_1.add(chckbxNewCheckBox);
 		
 		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Administración");
-		chckbxNewCheckBox_1.setBounds(187, 37, 97, 23);
+		chckbxNewCheckBox_1.setBounds(187, 37, 112, 23);
 		panel_1.add(chckbxNewCheckBox_1);
 			
 		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Programación");
 		chckbxNewCheckBox_2.setBounds(187, 7, 97, 23);
 		panel_1.add(chckbxNewCheckBox_2);
+		
+		JLabel lblNewLabel = new JLabel("Cantidad de horas en el  computador: ");
+		lblNewLabel.setBounds(37, 213, 194, 14);
+		contentPane.add(lblNewLabel);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(241, 210, 86, 20);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String sistema="";
+				//RADIOBUTTONS
+				if(radio1.isSelected())sistema=radio1.getText();		
+				if(radio2.isSelected())sistema=radio2.getText();	
+				if(radio3.isSelected())sistema=radio3.getText();	
+				
+				String mensaje=sistema;					
+					JOptionPane.showMessageDialog(null,mensaje);
+			}
+		});
+		btnAceptar.setBounds(335, 238, 89, 23);
+		contentPane.add(btnAceptar);
 		
 		setVisible(true);
 	}
