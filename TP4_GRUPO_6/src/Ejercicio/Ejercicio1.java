@@ -102,7 +102,8 @@ public class Ejercicio1 extends JFrame {
 		JButton btnMostrar = new JButton("Mostrar");
 		btnMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(!(txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtTelefono.getText().equals("") || txtFechaNac.getText().equals(""))) {
+				if(!(txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtTelefono.getText().equals("") 
+						|| txtFechaNac.getText().equals(""))) {
 				lblMostrarDatos.setText(lblMostrarDatos.getText() + "\n"  +  txtNombre.getText() + " " + txtApellido.getText() +
 						" " +txtTelefono.getText() + " " + txtFechaNac.getText() );
 				}

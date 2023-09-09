@@ -140,15 +140,66 @@ public class Ejercicio2 extends JFrame {
 		
 		btnCalcular.addActionListener(new ActionListener() {		
 			@Override
-			public void actionPerformed(ActionEvent e) {	
+			public void actionPerformed(ActionEvent e) {
+				
+				
 				if(validarCampos()) {
 					System.out.println("COMPLETE LOS CAMPOS DE NOTAS");
+										
 				}
+				else if (!datosNumericos()) {
+					System.out.println("Los datos ingresados deben ser numericos");
+				}
+				else if(!datos1a10()) {
+					System.out.println("Las notas ingresedas deben ir del 1 al 10");
+					
+				}
+				
 			}
 			
+		private boolean datosNumericos() {
+			
+			boolean datos= true;
+			
+			String nota1= txtNota1.getText();
+			String nota2= txtNota2.getText();
+			String nota3= txtNota3.getText();
+			
+			for (int i = 0; i < nota1.length(); i++) {
+				if(Character.isLetter(nota1.charAt(i))) {
+					datos= false;
+				}				
+			}
+			for (int i = 0; i < nota2.length(); i++) {
+				if(Character.isLetter(nota2.charAt(i))) {
+					datos= false;
+				}				
+			}
+			for (int i = 0; i < nota3.length(); i++) {
+				if(Character.isLetter(nota3.charAt(i))) {
+					datos= false;
+				}				
+			}
+			
+			return datos;
+		}
+		
+		private boolean datos1a10() {
+			
+			int nota1= Integer.parseInt(txtNota1.getText());
+			int nota2= Integer.parseInt(txtNota2.getText());
+			int nota3= Integer.parseInt(txtNota3.getText());
+			
+			if((nota1 >=1 && nota1 <=10) && (nota2 >=1 && nota2 <=10) && (nota3 >=1 && nota3 <=10)) {
+				return true;
+			}
+			
+			return false;
+		}
+			
 		private boolean validarCampos() {
-			return txtNota1.getText().isEmpty() &&
-		           txtNota2.getText().isEmpty() &&
+			return txtNota1.getText().isEmpty() ||
+		           txtNota2.getText().isEmpty() ||
 		           txtNota3.getText().isEmpty();
 		   }
 		});
