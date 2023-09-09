@@ -97,18 +97,33 @@ public class Ejercicio1 extends JFrame {
 		lblMostrarDatos.setBounds(68, 288, 318, 97);
 		contentPane.add(lblMostrarDatos);
 		
+		JLabel lblError = new JLabel("");
+		lblError.setBounds(65, 329, 321, 14);
+		contentPane.add(lblError);
+		
 		
 		
 		JButton btnMostrar = new JButton("Mostrar");
 		btnMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(!(txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtTelefono.getText().equals("") 
-						|| txtFechaNac.getText().equals(""))) {
-				lblMostrarDatos.setText(lblMostrarDatos.getText() + "\n"  +  txtNombre.getText() + " " + txtApellido.getText() +
-						" " +txtTelefono.getText() + " " + txtFechaNac.getText() );
+
+				if((txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtTelefono.getText().equals("") 
+						|| txtFechaNac.getText().equals("") ))
+			    {
+					lblError.setText("Ingrese datos en todos los campos"); 
+					lblMostrarDatos.setText(""); 
 				}
-			}
-		});
+					
+				else
+				{
+				lblMostrarDatos.setText("<html> Los datos ingresados fueron: " + "<br>"  + "Nombre: " + txtNombre.getText() + "<br>" + "Apellido: " + txtApellido.getText() +
+						"<br>" + "Telefono: " + txtTelefono.getText() + "<br>"+ "Fecha de nacimiento: " + txtFechaNac.getText() + "</html>" );
+				lblError.setText("");
+				}
+				}
+
+			});
+
 		btnMostrar.setBounds(252, 239, 104, 33);
 		contentPane.add(btnMostrar);
 		
