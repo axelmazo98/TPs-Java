@@ -30,7 +30,7 @@ public class Ejercicio2 extends JFrame {
 	private JTextField txtNota2;
 	private JTextField txtNota3;
 	private JTextField txtCondicion;
-	private JTextField textField_5;
+	private JTextField txtPromedio;
 
 	/**
 	 * Launch the application.
@@ -52,8 +52,8 @@ public class Ejercicio2 extends JFrame {
 	 * Create the frame.
 	 */
 	public Ejercicio2() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Promedio");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -122,10 +122,10 @@ public class Ejercicio2 extends JFrame {
 		lblNewLabel_5.setBounds(21, 80, 74, 14);
 		panel_1.add(lblNewLabel_5);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(105, 44, 86, 20);
-		panel_1.add(textField_5);
+		txtPromedio = new JTextField();
+		txtPromedio.setColumns(10);
+		txtPromedio.setBounds(105, 44, 86, 20);
+		panel_1.add(txtPromedio);
 		
 		JButton btnCalcular = new JButton("Calcular");
 		btnCalcular.setBounds(317, 72, 89, 23);
@@ -138,6 +138,23 @@ public class Ejercicio2 extends JFrame {
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.setBounds(317, 162, 89, 23);
 		contentPane.add(btnSalir);
+		
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtNota1.setText("");
+				txtNota2.setText("");
+				txtNota3.setText("");
+				txtPromedio.setText("");
+				txtCondicion.setText("");
+				comboBox.setSelectedItem("Aprobado");
+			}
+		});
+		
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		
 		btnCalcular.addActionListener(new ActionListener() {		
 			@Override
@@ -158,7 +175,6 @@ public class Ejercicio2 extends JFrame {
 					else {
 						txtCondicion.setText(condicion());		
 					}
-				
 				
 			}
 			
@@ -230,7 +246,6 @@ public class Ejercicio2 extends JFrame {
 		   }
 		
 		});
-		
 		
 		setVisible(true);
 	}

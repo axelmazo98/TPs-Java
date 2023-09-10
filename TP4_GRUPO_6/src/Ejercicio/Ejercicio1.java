@@ -48,7 +48,7 @@ public class Ejercicio1 extends JFrame {
 	 */
 	public Ejercicio1() {
 		setFont(new Font("Arial", Font.BOLD, 13));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 445);
 		setTitle("Contactos");
 		getContentPane().setLayout(null);
