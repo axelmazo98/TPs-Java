@@ -22,13 +22,14 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
+
 public class Ejercicio2 extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNota1;
 	private JTextField txtNota2;
 	private JTextField txtNota3;
-	private JTextField textField_4;
+	private JTextField txtCondicion;
 	private JTextField textField_5;
 
 	/**
@@ -112,10 +113,10 @@ public class Ejercicio2 extends JFrame {
 		panel_1.add(lblNewLabel_4);
 		
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(99, 60, 86, 20);
-		panel_1.add(textField_4);
-		textField_4.setColumns(10);
+		txtCondicion = new JTextField();
+		txtCondicion.setBounds(99, 60, 86, 20);
+		panel_1.add(txtCondicion);
+		txtCondicion.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("Promedio:");
 		lblNewLabel_5.setBounds(21, 80, 74, 14);
@@ -154,7 +155,32 @@ public class Ejercicio2 extends JFrame {
 					System.out.println("Las notas ingresedas deben ir del 1 al 10");
 					
 				}
+					else {
+						txtCondicion.setText(condicion());		
+					}
 				
+				
+			}
+			
+			// Función que devuelve en un String la condición del alumno según los requisitos.
+			private String condicion() {
+				
+					// Chequea si el item seleccionado tiene como texto "Desaprobado". Caso correcto devuelve condición de LIBRE.
+					if(comboBox.getSelectedItem() == "Desaprobado") {
+						return "Libre";
+					}
+					
+					// Chequea si alguna de las notas es ,emos a 6 y devuelve la consición de LIBRE.
+					if(Integer.parseInt(txtNota1.getText()) < 6 || Integer.parseInt(txtNota2.getText()) < 6 || Integer.parseInt(txtNota3.getText()) < 6) {
+						return "Libre";
+					}
+					
+					// Chequea si alguna de las notas es menor a 8 y devuelve la condición de REGULAR.
+					if(Integer.parseInt(txtNota1.getText()) < 8 || Integer.parseInt(txtNota2.getText()) < 8 || Integer.parseInt(txtNota3.getText()) < 8) {
+						return "Regular";
+					}
+					
+					return "";
 			}
 			
 		private boolean datosNumericos() {
@@ -202,8 +228,11 @@ public class Ejercicio2 extends JFrame {
 		           txtNota2.getText().isEmpty() ||
 		           txtNota3.getText().isEmpty();
 		   }
+		
 		});
+		
 		
 		setVisible(true);
 	}
+	
 }
