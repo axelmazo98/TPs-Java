@@ -174,8 +174,17 @@ public class Ejercicio2 extends JFrame {
 					
 				}
 					else {
-						txtCondicion.setText(condicion());		
+						txtCondicion.setText(condicion());	
+						txtPromedio.setText(String.format("%.2f", getPromedio()));
+						
 					}
+				
+			}
+			
+			public double getPromedio() {
+							
+				return  (Float.parseFloat(txtNota1.getText()) + Float.parseFloat(txtNota2.getText()) + Float.parseFloat(txtNota3.getText())) /3;
+				
 				
 			}
 			
@@ -197,7 +206,7 @@ public class Ejercicio2 extends JFrame {
 						return "Regular";
 					}
 					
-					return "";
+					return "Promocionado";
 			}
 			
 		private boolean datosNumericos() {
