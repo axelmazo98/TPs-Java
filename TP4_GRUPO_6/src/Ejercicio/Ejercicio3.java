@@ -18,6 +18,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JCheckBox;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 
 public class Ejercicio3 extends JFrame{
@@ -25,7 +33,8 @@ public class Ejercicio3 extends JFrame{
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtHoras;
+	private final ButtonGroup grupoCheck = new ButtonGroup();
 
 	
 	public static void main(String[] args) {
@@ -45,7 +54,7 @@ public class Ejercicio3 extends JFrame{
 	public Ejercicio3() {
 		setTitle("Seleccion Multiple");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 310);
+		setBounds(100, 100, 450, 329);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
@@ -91,27 +100,84 @@ public class Ejercicio3 extends JFrame{
 		
 		///CHECKBOXS
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Diseño Grafico");
+		grupoCheck.add(chckbxNewCheckBox);
 		chckbxNewCheckBox.setBounds(187, 66, 131, 23);
 		panel_1.add(chckbxNewCheckBox);
 		
 		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Administración");
+		grupoCheck.add(chckbxNewCheckBox_1);
 		chckbxNewCheckBox_1.setBounds(187, 37, 112, 23);
 		panel_1.add(chckbxNewCheckBox_1);
 			
 		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Programación");
+		grupoCheck.add(chckbxNewCheckBox_2);
 		chckbxNewCheckBox_2.setBounds(187, 7, 97, 23);
 		panel_1.add(chckbxNewCheckBox_2);
 		
 		JLabel lblNewLabel = new JLabel("Cantidad de horas en el  computador: ");
-		lblNewLabel.setBounds(37, 213, 194, 14);
+		lblNewLabel.setBounds(10, 213, 227, 14);
 		contentPane.add(lblNewLabel);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(241, 210, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		txtHoras = new JTextField();
+		txtHoras.setBounds(234, 210, 89, 20);
+		contentPane.add(txtHoras);
+		txtHoras.setColumns(10);
+		
+		JLabel lblMensaje = new JLabel("");
+		lblMensaje.setBounds(37, 253, 286, 16);
+		contentPane.add(lblMensaje);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.setBounds(335, 238, 89, 23);
+		contentPane.add(btnAceptar);
+		
+		/// Detecta cuando se realiza acción sobre radio button 1
+		radio1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				lblMensaje.setText("");
+			}
+		});
+		
+		/// Detecta cuando se realiza acción sobre radio button 2
+		radio2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				lblMensaje.setText("");
+			}
+		});
+		
+		/// Detecta cuando se realiza acción sobre radio button 3
+		radio3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				lblMensaje.setText("");
+			}
+		});
+		
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblMensaje.setText("");
+			}
+		});
+		
+		chckbxNewCheckBox_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblMensaje.setText("");
+			}
+		});
+		
+		chckbxNewCheckBox_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblMensaje.setText("");
+			}
+		});
+		
+		// Detecta cuando se hace foco en el textbox
+		txtHoras.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				lblMensaje.setText("");
+			}
+		});
+		
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String sistema="";
@@ -120,12 +186,32 @@ public class Ejercicio3 extends JFrame{
 				if(radio2.isSelected())sistema=radio2.getText();	
 				if(radio3.isSelected())sistema=radio3.getText();	
 				
-				String mensaje=sistema;					
+				if(!validarCampos()) {
+					lblMensaje.setForeground(Color.red);;
+					lblMensaje.setText("Debe completar todas las opciones");
+				}
+				else {
+					String mensaje=sistema;					
 					JOptionPane.showMessageDialog(null,mensaje);
+					limpiarCampos();
+				}
+				
+			}
+			
+			/// Valida que no haya campos vacíos.
+			private boolean validarCampos() {
+				if(grupo.getSelection() == null || grupoCheck.getSelection() == null || txtHoras.getText().isEmpty()) {
+					return false;
+				}
+				return true;
+			}
+			
+			private void limpiarCampos() {
+				grupo.clearSelection();
+				grupoCheck.clearSelection();
+				txtHoras.setText("");
 			}
 		});
-		btnAceptar.setBounds(335, 238, 89, 23);
-		contentPane.add(btnAceptar);
 		
 		setVisible(true);
 	}
