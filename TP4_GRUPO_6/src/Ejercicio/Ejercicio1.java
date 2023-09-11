@@ -75,7 +75,7 @@ public class Ejercicio1 extends JFrame {
 		contentPane.add(txtApellido);
 		txtApellido.setColumns(10);
 		
-		JLabel lblTelefono = new JLabel("Teléfono");
+		JLabel lblTelefono = new JLabel("Telefono");
 		lblTelefono.setBounds(68, 148, 69, 14);
 		contentPane.add(lblTelefono);
 		
@@ -118,6 +118,10 @@ public class Ejercicio1 extends JFrame {
 				{
 				lblMostrarDatos.setText("<html> Los datos ingresados fueron: " + "<br>"  + "Nombre: " + txtNombre.getText() + "<br>" + "Apellido: " + txtApellido.getText() +
 						"<br>" + "Telefono: " + txtTelefono.getText() + "<br>"+ "Fecha de nacimiento: " + txtFechaNac.getText() + "</html>" );
+				txtApellido.setText("");
+				txtFechaNac.setText("");
+				txtNombre.setText("");
+				txtTelefono.setText("");
 				lblError.setText("");
 				}
 				}
