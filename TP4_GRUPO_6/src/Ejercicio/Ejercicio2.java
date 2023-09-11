@@ -12,6 +12,7 @@ import javax.swing.JTextPane;
 import java.awt.Color;
 import javax.swing.JTabbedPane;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.html.HTMLEditorKit.Parser;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JEditorPane;
@@ -187,12 +188,12 @@ public class Ejercicio2 extends JFrame {
 					}
 					
 					// Chequea si alguna de las notas es ,emos a 6 y devuelve la consición de LIBRE.
-					if(Integer.parseInt(txtNota1.getText()) < 6 || Integer.parseInt(txtNota2.getText()) < 6 || Integer.parseInt(txtNota3.getText()) < 6) {
+					if(Float.parseFloat(txtNota1.getText()) < 6 || Float.parseFloat(txtNota2.getText()) < 6 || Float.parseFloat(txtNota3.getText()) < 6) {
 						return "Libre";
 					}
 					
 					// Chequea si alguna de las notas es menor a 8 y devuelve la condición de REGULAR.
-					if(Integer.parseInt(txtNota1.getText()) < 8 || Integer.parseInt(txtNota2.getText()) < 8 || Integer.parseInt(txtNota3.getText()) < 8) {
+					if(Float.parseFloat(txtNota1.getText()) < 8 || Float.parseFloat(txtNota2.getText()) < 8 || Float.parseFloat(txtNota3.getText()) < 8) {
 						return "Regular";
 					}
 					
@@ -228,9 +229,9 @@ public class Ejercicio2 extends JFrame {
 		
 		private boolean datos1a10() {
 			
-			int nota1= Integer.parseInt(txtNota1.getText());
-			int nota2= Integer.parseInt(txtNota2.getText());
-			int nota3= Integer.parseInt(txtNota3.getText());
+			float nota1= Float.parseFloat(txtNota1.getText());
+			float nota2= Float.parseFloat(txtNota2.getText());
+			float nota3= Float.parseFloat(txtNota3.getText());
 			
 			if((nota1 >=1 && nota1 <=10) && (nota2 >=1 && nota2 <=10) && (nota3 >=1 && nota3 <=10)) {
 				return true;
