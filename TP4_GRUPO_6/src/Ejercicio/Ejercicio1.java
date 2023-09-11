@@ -1,6 +1,7 @@
 package Ejercicio;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -106,15 +107,31 @@ public class Ejercicio1 extends JFrame {
 		JButton btnMostrar = new JButton("Mostrar");
 		btnMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				if((txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtTelefono.getText().equals("") 
-						|| txtFechaNac.getText().equals("") ))
-			    {
-					lblError.setText("Ingrese datos en todos los campos"); 
-					lblMostrarDatos.setText(""); 
+				Boolean completos = true;
+				lblError.setText("Ingrese datos en todos los campos");
+				lblMostrarDatos.setText("");
+				if(txtNombre.getText().isEmpty()) {
+					txtNombre.setBackground(Color.red);
+					completos = false;
 				}
+				else txtNombre.setBackground(Color.WHITE);
+				if(txtApellido.getText().isEmpty()) {
+					txtApellido.setBackground(Color.red);
+					completos = false;
+				}
+				else txtApellido.setBackground(Color.WHITE);
+				if(txtTelefono.getText().isEmpty()) {
+					txtTelefono.setBackground(Color.red);
+					completos = false;
+				}
+				else txtTelefono.setBackground(Color.WHITE);
+				if(txtFechaNac.getText().isEmpty()) {
+					txtFechaNac.setBackground(Color.red);
+					completos = false;
+				}
+				else txtFechaNac.setBackground(Color.WHITE);
 					
-				else
+				if(completos)
 				{
 				lblMostrarDatos.setText("<html> Los datos ingresados fueron: " + "<br>"  + "Nombre: " + txtNombre.getText() + "<br>" + "Apellido: " + txtApellido.getText() +
 						"<br>" + "Telefono: " + txtTelefono.getText() + "<br>"+ "Fecha de nacimiento: " + txtFechaNac.getText() + "</html>" );
