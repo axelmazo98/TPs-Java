@@ -181,17 +181,25 @@ public class Ejercicio3 extends JFrame{
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String sistema="";
+				String especialidades="- ";
+				String horas= "- ";
 				//RADIOBUTTONS
 				if(radio1.isSelected())sistema=radio1.getText();		
 				if(radio2.isSelected())sistema=radio2.getText();	
-				if(radio3.isSelected())sistema=radio3.getText();	
+				if(radio3.isSelected())sistema=radio3.getText();
+				
+				if(chckbxNewCheckBox.isSelected()) especialidades+= chckbxNewCheckBox.getText() + " ";
+				if(chckbxNewCheckBox_1.isSelected()) especialidades+= chckbxNewCheckBox_1.getText() + " ";
+				if(chckbxNewCheckBox_2.isSelected()) especialidades+= chckbxNewCheckBox_2.getText() + " ";
+				
+				horas+= txtHoras.getText();
 				
 				if(!validarCampos()) {
 					lblMensaje.setForeground(Color.red);;
 					lblMensaje.setText("Debe completar todas las opciones");
 				}
 				else {
-					String mensaje=sistema;					
+					String mensaje=sistema + especialidades + horas;					
 					JOptionPane.showMessageDialog(null,mensaje);
 					limpiarCampos();
 				}
