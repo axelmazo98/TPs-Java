@@ -198,6 +198,10 @@ public class Ejercicio3 extends JFrame{
 					lblMensaje.setForeground(Color.red);;
 					lblMensaje.setText("Debe completar todas las opciones");
 				}
+				else if(!soloNumeros(txtHoras.getText())) {
+					lblMensaje.setForeground(Color.red);;
+					lblMensaje.setText("Cantidad de horas debe contener valores numericos");
+				}
 				else {
 					String mensaje=sistema + especialidades + horas;					
 					JOptionPane.showMessageDialog(null,mensaje);
@@ -212,6 +216,18 @@ public class Ejercicio3 extends JFrame{
 					return false;
 				}
 				return true;
+			}
+			
+			public boolean soloNumeros(String cadena) {
+				
+				try {
+					Integer.parseInt(cadena);
+					
+					return true;
+					
+				} catch (Exception e) {
+					return false;
+				}
 			}
 			
 			private void limpiarCampos() {
