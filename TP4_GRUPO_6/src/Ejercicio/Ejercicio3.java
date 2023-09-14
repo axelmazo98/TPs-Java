@@ -36,21 +36,6 @@ public class Ejercicio3 extends JFrame{
 	private JTextField txtHoras;
 	private final ButtonGroup grupoCheck = new ButtonGroup();
 
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ejercicio3 frame = new Ejercicio3();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-
-	}
-
 	public Ejercicio3() {
 		setTitle("Seleccion Multiple");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -100,17 +85,14 @@ public class Ejercicio3 extends JFrame{
 		
 		///CHECKBOXS
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Diseño Grafico");
-		grupoCheck.add(chckbxNewCheckBox);
 		chckbxNewCheckBox.setBounds(187, 66, 131, 23);
 		panel_1.add(chckbxNewCheckBox);
 		
 		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Administración");
-		grupoCheck.add(chckbxNewCheckBox_1);
 		chckbxNewCheckBox_1.setBounds(187, 37, 112, 23);
 		panel_1.add(chckbxNewCheckBox_1);
 			
 		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Programación");
-		grupoCheck.add(chckbxNewCheckBox_2);
 		chckbxNewCheckBox_2.setBounds(187, 7, 97, 23);
 		panel_1.add(chckbxNewCheckBox_2);
 		
@@ -180,17 +162,17 @@ public class Ejercicio3 extends JFrame{
 		
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String sistema="";
-				String especialidades="- ";
-				String horas= "- ";
+				String sistema=" ";
+				String especialidades=" ";
+				String horas= " ";
 				//RADIOBUTTONS
 				if(radio1.isSelected())sistema=radio1.getText();		
 				if(radio2.isSelected())sistema=radio2.getText();	
 				if(radio3.isSelected())sistema=radio3.getText();
 				
-				if(chckbxNewCheckBox.isSelected()) especialidades+= chckbxNewCheckBox.getText() + " ";
-				if(chckbxNewCheckBox_1.isSelected()) especialidades+= chckbxNewCheckBox_1.getText() + " ";
-				if(chckbxNewCheckBox_2.isSelected()) especialidades+= chckbxNewCheckBox_2.getText() + " ";
+				if(chckbxNewCheckBox.isSelected()) especialidades+= chckbxNewCheckBox.getText() + " - ";
+				if(chckbxNewCheckBox_1.isSelected()) especialidades+= chckbxNewCheckBox_1.getText() + " - ";
+				if(chckbxNewCheckBox_2.isSelected()) especialidades+= chckbxNewCheckBox_2.getText() + " - ";
 				
 				horas+= txtHoras.getText();
 				
@@ -203,16 +185,16 @@ public class Ejercicio3 extends JFrame{
 					lblMensaje.setText("Cantidad de horas debe contener valores numericos");
 				}
 				else {
-					String mensaje=sistema + especialidades + horas;					
+					String mensaje=sistema + " - " + especialidades + horas + "Hs";					
 					JOptionPane.showMessageDialog(null,mensaje);
-					limpiarCampos();
 				}
 				
 			}
 			
 			/// Valida que no haya campos vacíos.
 			private boolean validarCampos() {
-				if(grupo.getSelection() == null || grupoCheck.getSelection() == null || txtHoras.getText().isEmpty()) {
+				
+				if(grupo.getSelection() == null || (chckbxNewCheckBox.isSelected() == false && chckbxNewCheckBox_1.isSelected() == false && chckbxNewCheckBox_2.isSelected() == false) || txtHoras.getText().isEmpty()) {
 					return false;
 				}
 				return true;
@@ -230,11 +212,10 @@ public class Ejercicio3 extends JFrame{
 				}
 			}
 			
-			private void limpiarCampos() {
+			/*public void limpiarCampos() {
 				grupo.clearSelection();
-				grupoCheck.clearSelection();
 				txtHoras.setText("");
-			}
+			}*/
 		});
 		
 		setVisible(true);
