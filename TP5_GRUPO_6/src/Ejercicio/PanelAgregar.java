@@ -37,7 +37,17 @@ public class PanelAgregar extends JPanel {
 		txtNombre.setBounds(195, 65, 86, 20);
 		add(txtNombre);
 		txtNombre.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Género");
+		lblNewLabel.setBounds(43, 116, 56, 14);
+		add(lblNewLabel);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(195, 112, 108, 22);
+		add(comboBox);
+		
+		JButton btnNewButton = new JButton("Aceptar");
+		btnNewButton.setBounds(162, 187, 89, 23);
+		add(btnNewButton);
 	}
-	
-
 }
