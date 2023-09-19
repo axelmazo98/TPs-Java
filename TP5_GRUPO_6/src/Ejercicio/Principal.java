@@ -51,6 +51,18 @@ public class Principal extends JFrame{
 		});
 		mnNewMenu.add(menuItemAgregarP);
 		
+		JMenuItem mntmListar = new JMenuItem("Listar");
+		mntmListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane.removeAll();
+				PanelListar panel = new PanelListar();
+				contentPane.add(panel);
+				contentPane.revalidate();
+				
+			}
+		});
+		mnNewMenu.add(mntmListar);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
