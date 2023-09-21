@@ -1,6 +1,6 @@
 package Ejercicio;
 
-public class Peliculas {
+public class Peliculas implements Comparable<Peliculas> {
     private static int contadorID = 1;
     private int id;
     private String nombre;
@@ -73,6 +73,10 @@ public class Peliculas {
 		result = prime * result + id;
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		return result;
+	}
+	@Override
+	public int compareTo(Peliculas Peli) {
+		return this.nombre.compareTo(Peli.getNombre());
 	}
     
 }

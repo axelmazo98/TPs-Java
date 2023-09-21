@@ -11,6 +11,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.util.Collections;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 
@@ -61,7 +63,6 @@ public class Principal extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				contentPane.removeAll();
 				PanelListar panel = new PanelListar(listModel);
-				
 				contentPane.add(panel);
 				contentPane.revalidate();
 				

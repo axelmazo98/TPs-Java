@@ -2,6 +2,9 @@ package Ejercicio;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.DefaultListModel;
@@ -26,6 +29,8 @@ public class PanelAgregar extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelAgregar(DefaultListModel<Peliculas> listModel) {
+		
+		
 		setLayout(null);
 		lmAgregar=listModel;
 		
@@ -77,6 +82,7 @@ public class PanelAgregar extends JPanel {
 					pelicula.setGenero((Generos)comboBoxGenero.getSelectedItem());
 					
 					lmAgregar.addElement(pelicula);
+					OrdenarPelis();
 					
 					limpiarCampos();
 					lblId.setText(String.valueOf(lmAgregar.getSize()+1)) ;
@@ -93,4 +99,24 @@ public class PanelAgregar extends JPanel {
 		txtNombre.setText("");
 		comboBoxGenero.setSelectedIndex(0);
 	}
+	
+	private void OrdenarPelis (){
+		int Elementos = lmAgregar.getSize();
+		ArrayList<Peliculas> p = new ArrayList<>();
+		int i;
+		
+		for(i=0;i<Elementos;i++) {
+			Peliculas pel = new Peliculas();
+			p.add(lmAgregar.get(i));
+		}
+		
+		Collections.sort(p);
+		lmAgregar.removeAllElements();
+		
+		for(i=0;i<Elementos;i++) {
+			lmAgregar.addElement(p.get(i));;
+		}
+		
+	}
+	
 }
