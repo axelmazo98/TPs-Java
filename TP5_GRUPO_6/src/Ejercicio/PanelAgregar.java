@@ -24,6 +24,7 @@ public class PanelAgregar extends JPanel {
 	private JButton btnNewButton;
 	
 	private DefaultListModel<Peliculas> lmAgregar;
+	private List<String> nombresDePeliculas = new ArrayList<>();
 	
 	/**
 	 * Create the panel.
@@ -75,6 +76,13 @@ public class PanelAgregar extends JPanel {
 				else if(comboBoxGenero.getSelectedIndex() == 0) {
 					JOptionPane.showMessageDialog(null, "Debe seleccionar un 'GÃ©nero'");
 				}
+				else
+				{
+				String nombrePelicula = txtNombre.getText().toLowerCase();
+				if (nombresDePeliculas.contains(nombrePelicula)) {
+			        JOptionPane.showMessageDialog(null, "Ya existe una película con ese nombre");
+			    
+				}
 				else {
 					Peliculas pelicula= new Peliculas();
 					pelicula.setId(Integer.parseInt(lblId.getText()));
@@ -83,12 +91,14 @@ public class PanelAgregar extends JPanel {
 					
 					lmAgregar.addElement(pelicula);
 					OrdenarPelis();
+					nombresDePeliculas.add(nombrePelicula);
 					
 					limpiarCampos();
 					lblId.setText(String.valueOf(lmAgregar.getSize()+1)) ;
 					JOptionPane.showMessageDialog(null, "Pelicula agregada correctamente");
 					
 				}
+			}
 			}
 		});
 		btnNewButton.setBounds(167, 199, 181, 32);
