@@ -13,41 +13,61 @@ import javax.swing.JTextField;
 
 public class PanelAgregar extends JPanel {
 	private JTextField txtNombre;
+	private JLabel lbl_ID;
 	private JLabel lblId;
-
+	private JLabel lblNombre;
+	private JLabel lblNewLabel;
+	private JComboBox<Generos> comboBoxGenero;
+	private JButton btnNewButton;
+	
 	/**
 	 * Create the panel.
 	 */
 	public PanelAgregar() {
 		setLayout(null);
 		
-		JLabel lbl_ID = new JLabel("ID");
+		lbl_ID = new JLabel("ID");
 		lbl_ID.setBounds(43, 31, 46, 14);
 		add(lbl_ID);
 		
-		JLabel lblId = new JLabel("ID ejemplo: 1");
+		lblId = new JLabel("ID ejemplo: 1");
 		lblId.setBounds(195, 31, 86, 14);
 		add(lblId);
 		
-		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(43, 68, 46, 14);
 		add(lblNombre);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(195, 65, 86, 20);
+		txtNombre.setBounds(195, 65, 245, 20);
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Género");
+		lblNewLabel = new JLabel("Género");
 		lblNewLabel.setBounds(43, 116, 56, 14);
 		add(lblNewLabel);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(195, 112, 108, 22);
-		add(comboBox);
+		comboBoxGenero = new JComboBox<Generos>();
+		comboBoxGenero.setBounds(195, 112, 245, 22);
+		add(comboBoxGenero);
+		comboBoxGenero.addItem(new Generos("Seleccione un genero"));
+		comboBoxGenero.addItem(new Generos("Terror"));
+		comboBoxGenero.addItem(new Generos("Accion"));
+		comboBoxGenero.addItem(new Generos("Suspenso"));
+		comboBoxGenero.addItem(new Generos("Romántica"));
 		
-		JButton btnNewButton = new JButton("Aceptar");
-		btnNewButton.setBounds(162, 187, 89, 23);
+		btnNewButton = new JButton("Aceptar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(txtNombre.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "El campo 'Nombre' no puede estar en blanco ");
+				}
+				else if(comboBoxGenero.getSelectedIndex() == 0) {
+					JOptionPane.showMessageDialog(null, "Debe seleccionar un 'Género'");
+				}
+			}
+		});
+		btnNewButton.setBounds(167, 199, 181, 32);
 		add(btnNewButton);
 	}
 }

@@ -9,7 +9,6 @@ public class Generos {
 	}	
 
 	public Generos(String nombre) {
-		super();
 		Nombre = nombre;
 	}
 
@@ -26,6 +25,6 @@ public class Generos {
 	//METODOS
 	@Override
 	public String toString() {
-		return "Genero : "+ Nombre;
+		return Nombre;
 	}
 }
