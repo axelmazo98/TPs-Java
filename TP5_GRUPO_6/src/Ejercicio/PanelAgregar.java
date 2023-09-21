@@ -78,8 +78,10 @@ public class PanelAgregar extends JPanel {
 					
 					lmAgregar.addElement(pelicula);
 					
-					JOptionPane.showMessageDialog(null, "Pelicula agregada correctamente");
+					limpiarCampos();
 					lblId.setText(String.valueOf(lmAgregar.getSize()+1)) ;
+					JOptionPane.showMessageDialog(null, "Pelicula agregada correctamente");
+					
 				}
 			}
 		});
@@ -87,5 +89,8 @@ public class PanelAgregar extends JPanel {
 		add(btnNewButton);
 	}
 	
-	
+	private void limpiarCampos() {
+		txtNombre.setText("");
+		comboBoxGenero.setSelectedIndex(0);
+	}
 }

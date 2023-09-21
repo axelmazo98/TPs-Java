@@ -43,7 +43,8 @@ public class Peliculas {
 	//METODOS
 	@Override
 	public String toString() {
-		return "Pelicula id= " + id + ", nombre= " + nombre + " genero=" + genero;
+		return id + " - " + nombre + " - " + genero;
+		
 	}
 
 	@Override

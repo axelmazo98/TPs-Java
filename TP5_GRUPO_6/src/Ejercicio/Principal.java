@@ -61,7 +61,7 @@ public class Principal extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				contentPane.removeAll();
 				PanelListar panel = new PanelListar(listModel);
-			
+				
 				contentPane.add(panel);
 				contentPane.revalidate();
 				

@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import java.awt.Color;
+import java.util.Collections;
+import java.util.List;
 
 public class PanelListar extends JPanel {
 	
@@ -22,7 +24,11 @@ public class PanelListar extends JPanel {
 		lblPeliculas.setBounds(57, 127, 46, 14);
 		add(lblPeliculas);
 		
+		
+		
 		list = new JList();
+		
+		
 		list.setModel(listModel);
 		
 		list.setBounds(146, 60, 270, 190);
