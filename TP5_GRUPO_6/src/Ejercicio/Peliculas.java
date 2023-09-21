@@ -4,13 +4,13 @@ public class Peliculas {
     private static int contadorID = 1;
     private int id;
     private String nombre;
-    private String genero;
+    private Generos genero;
 
     //CONSTRUCTORES
     public Peliculas() {
     	
     }
-    public Peliculas(String nombre, String genero) {
+    public Peliculas(String nombre, Generos genero) {
         this.id = contadorID++;
         this.nombre = nombre;
         this.genero = genero;
@@ -25,11 +25,22 @@ public class Peliculas {
         return nombre;
     }
 
-    public String getGenero() {
+    public Generos getGenero() {
         return genero;
     }
     
-    //METODOS
+    
+    
+    public void setId(int id) {
+		this.id = id;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public void setGenero(Generos genero) {
+		this.genero = genero;
+	}
+	//METODOS
 	@Override
 	public String toString() {
 		return "Pelicula id= " + id + ", nombre= " + nombre + " genero=" + genero;

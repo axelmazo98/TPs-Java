@@ -2,6 +2,8 @@ package Ejercicio;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -15,6 +17,7 @@ import java.awt.event.ActionEvent;
 public class Principal extends JFrame{
 	
 	private JPanel contentPane;
+	private static DefaultListModel<Peliculas> listModel;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -22,6 +25,7 @@ public class Principal extends JFrame{
 				try {
 					Principal frame = new Principal();
 					frame.setVisible(true);
+					listModel= new DefaultListModel<Peliculas>();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,7 +47,8 @@ public class Principal extends JFrame{
 		menuItemAgregarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {	
 				contentPane.removeAll();
-				PanelAgregar panel = new PanelAgregar();
+				PanelAgregar panel = new PanelAgregar(listModel);
+				//panel.setDefaultListModel(listModel);
 				contentPane.add(panel);
 				contentPane.repaint();
 				contentPane.revalidate();
@@ -55,7 +60,8 @@ public class Principal extends JFrame{
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				contentPane.removeAll();
-				PanelListar panel = new PanelListar();
+				PanelListar panel = new PanelListar(listModel);
+			
 				contentPane.add(panel);
 				contentPane.revalidate();
 				

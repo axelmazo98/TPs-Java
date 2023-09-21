@@ -20,17 +20,22 @@ public class PanelAgregar extends JPanel {
 	private JComboBox<Generos> comboBoxGenero;
 	private JButton btnNewButton;
 	
+	private DefaultListModel<Peliculas> lmAgregar;
+	
 	/**
 	 * Create the panel.
 	 */
-	public PanelAgregar() {
+	public PanelAgregar(DefaultListModel<Peliculas> listModel) {
 		setLayout(null);
+		lmAgregar=listModel;
 		
 		lbl_ID = new JLabel("ID");
 		lbl_ID.setBounds(43, 31, 46, 14);
 		add(lbl_ID);
 		
 		lblId = new JLabel("ID ejemplo: 1");
+		
+		lblId.setText(String.valueOf(lmAgregar.getSize()+1)) ;
 		lblId.setBounds(195, 31, 86, 14);
 		add(lblId);
 		
@@ -65,9 +70,22 @@ public class PanelAgregar extends JPanel {
 				else if(comboBoxGenero.getSelectedIndex() == 0) {
 					JOptionPane.showMessageDialog(null, "Debe seleccionar un 'Género'");
 				}
+				else {
+					Peliculas pelicula= new Peliculas();
+					pelicula.setId(Integer.parseInt(lblId.getText()));
+					pelicula.setNombre(txtNombre.getText());
+					pelicula.setGenero((Generos)comboBoxGenero.getSelectedItem());
+					
+					lmAgregar.addElement(pelicula);
+					
+					JOptionPane.showMessageDialog(null, "Pelicula agregada correctamente");
+					lblId.setText(String.valueOf(lmAgregar.getSize()+1)) ;
+				}
 			}
 		});
 		btnNewButton.setBounds(167, 199, 181, 32);
 		add(btnNewButton);
 	}
+	
+	
 }

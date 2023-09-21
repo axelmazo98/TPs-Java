@@ -1,5 +1,6 @@
 package Ejercicio;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -11,8 +12,9 @@ public class PanelListar extends JPanel {
 	
 	private JLabel lblPeliculas;
 	private JList list;
+	private DefaultListModel<Peliculas> lmListar;
 	
-	public PanelListar() {
+	public PanelListar(DefaultListModel<Peliculas> listModel) {
 		
 		setLayout(null);
 		
@@ -21,7 +23,11 @@ public class PanelListar extends JPanel {
 		add(lblPeliculas);
 		
 		list = new JList();
+		list.setModel(listModel);
+		
 		list.setBounds(146, 60, 270, 190);
 		add(list);
 	}
+	
+	
 }
