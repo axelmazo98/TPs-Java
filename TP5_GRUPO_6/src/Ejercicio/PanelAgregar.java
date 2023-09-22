@@ -120,7 +120,7 @@ public class PanelAgregar extends JPanel {
 			p.add(lmAgregar.get(i));
 		}
 		
-		Collections.sort(p);
+		Collections.sort(p, (p1,p2) -> p1.getNombre().compareToIgnoreCase(p2.getNombre()));
 		lmAgregar.removeAllElements();
 		
 		for(i=0;i<Elementos;i++) {
