@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import presentacion.vista.PanelAgregarPersonas;
 import presentacion.vista.PanelEliminarPersona;
+import presentacion.vista.PanelListarPersonas;
 import presentacion.vista.PanelModificarPersonas;
 import presentacion.vista.VentanaPrincipal;
 
@@ -16,6 +17,7 @@ public class controladorPersona implements ActionListener{
 	private PanelAgregarPersonas panelAgregarPersonas;
 	private PanelEliminarPersona eliminarPersona;
 	private PanelModificarPersonas panelModificarPersonas;
+	private PanelListarPersonas panelListarPersonas;
 	
 	
 	public controladorPersona(VentanaPrincipal vista) {
@@ -26,6 +28,7 @@ public class controladorPersona implements ActionListener{
 		panelAgregarPersonas= new PanelAgregarPersonas();
 		eliminarPersona = new PanelEliminarPersona();
 		panelModificarPersonas = new PanelModificarPersonas();
+		panelListarPersonas = new PanelListarPersonas();
 		
 		//Eventos menu del Frame principal llamado Ventana
 		this.ventanaPrincipal.getMiAgregar().addActionListener(a->EventoClickMenu_AbrirPanel_AgregarPersona(a));
@@ -33,6 +36,8 @@ public class controladorPersona implements ActionListener{
 		this.ventanaPrincipal.getMenuEliminar().addActionListener(a->EventoClickMenu_EliminsrPersona(a));
 		
 		this.ventanaPrincipal.getMenuModificar().addActionListener(a->EventoClickMenu_ModificarPersona(a));
+		
+		this.ventanaPrincipal.getMenuListar().addActionListener(a->EventoClickMenu_ListarPersonas(a));
 	}
 	
 	//EventoClickMenu abrir PanelAgregarPersonas
@@ -56,6 +61,13 @@ public class controladorPersona implements ActionListener{
 	{		
 		ventanaPrincipal.getContentPane().removeAll();
 		ventanaPrincipal.getContentPane().add(panelModificarPersonas);
+		ventanaPrincipal.getContentPane().repaint();
+		ventanaPrincipal.getContentPane().revalidate();
+	}
+	
+	public void EventoClickMenu_ListarPersonas(ActionEvent a) {
+		ventanaPrincipal.getContentPane().removeAll();
+		ventanaPrincipal.getContentPane().add(panelListarPersonas);
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
 	}
