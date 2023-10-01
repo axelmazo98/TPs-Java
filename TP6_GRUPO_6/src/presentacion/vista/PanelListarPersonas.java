@@ -22,6 +22,7 @@ import javax.swing.JTable;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import javax.swing.ListSelectionModel;
+import javax.swing.JScrollPane;
 
 public class PanelListarPersonas extends JPanel {
 	private JTable jtListaPersonas;
@@ -36,27 +37,17 @@ public class PanelListarPersonas extends JPanel {
 		lblLista.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblLista, BorderLayout.NORTH);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		add(scrollPane, BorderLayout.CENTER);
+		
 		jtListaPersonas = new JTable();
-		jtListaPersonas.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		jtListaPersonas.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"Nombre"
+				"Nombre", "Apellido", "DNI" 
 			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		
-		/*DefaultTableModel tablaDefecto = new DefaultTableModel();
-		String[] columnas = new String[] {"Nombre", "Apellido", "DNI"};
-		tablaDefecto.setColumnIdentifiers(columnas);
-		jtListaPersonas.setModel(tablaDefecto);*/
-		add(jtListaPersonas, BorderLayout.CENTER);
+		));
+		scrollPane.setViewportView(jtListaPersonas);
 	}
 }
