@@ -3,8 +3,12 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Entidades.Persona;
+import Negocio.IPersonaNegocio;
 import presentacion.vista.PanelAgregarPersonas;
 import presentacion.vista.PanelEliminarPersona;
 import presentacion.vista.PanelListarPersonas;
@@ -18,11 +22,13 @@ public class controladorPersona implements ActionListener{
 	private PanelEliminarPersona eliminarPersona;
 	private PanelModificarPersonas panelModificarPersonas;
 	private PanelListarPersonas panelListarPersonas;
+	private IPersonaNegocio neg;
 	
 	
-	public controladorPersona(VentanaPrincipal vista) {
+	public controladorPersona(VentanaPrincipal vista, IPersonaNegocio pNeg)  {
 		//Guardo todas las instancias que recibo en el constructor
 		this.ventanaPrincipal = vista;
+		this.neg = pNeg;
 		
 		//Instancio los paneles
 		panelAgregarPersonas= new PanelAgregarPersonas();
@@ -38,6 +44,9 @@ public class controladorPersona implements ActionListener{
 		this.ventanaPrincipal.getMenuModificar().addActionListener(a->EventoClickMenu_ModificarPersona(a));
 		
 		this.ventanaPrincipal.getMenuListar().addActionListener(a->EventoClickMenu_ListarPersonas(a));
+		
+		//LISTADO
+		this.panelAgregarPersonas.getBtnAceptar().addActionListener(a->agregarPersona(a));
 	}
 	
 	//EventoClickMenu abrir PanelAgregarPersonas
@@ -70,6 +79,20 @@ public class controladorPersona implements ActionListener{
 		ventanaPrincipal.getContentPane().add(panelListarPersonas);
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
+	}
+	
+	public void agregarPersona(ActionEvent a) {
+		String dni = this.panelAgregarPersonas.getTxtDni().getText();
+		String nombre = this.panelAgregarPersonas.getTxtNombre().getText();
+		String apellido = this.panelAgregarPersonas.getTxtApellido().getText();
+		Persona p1 = new Persona(dni, nombre, apellido);
+		String mensaje=neg.insert(p1);
+		
+		this.panelAgregarPersonas.getTxtDni().setText("");
+		this.panelAgregarPersonas.getTxtNombre().setText("");
+		this.panelAgregarPersonas.getTxtApellido().setText("");
+		
+		JOptionPane.showMessageDialog(null, mensaje);
 	}
 	
 	public void inicializar()

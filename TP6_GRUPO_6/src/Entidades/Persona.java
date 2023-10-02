@@ -6,11 +6,11 @@ public class Persona {
 	private String apellido;
 	private String dni;
 	
-	Persona(){
+	public Persona(){
 		
 	}
 	
-	Persona(String nombre, String apellido, String dni){
+	public Persona(String nombre, String apellido, String dni){
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
