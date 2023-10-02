@@ -2,18 +2,18 @@ package Entidades;
 
 public class Persona {
 	
+	private String dni;
 	private String nombre;
 	private String apellido;
-	private String dni;
-	
+		
 	public Persona(){
 		
 	}
 	
-	public Persona(String nombre, String apellido, String dni){
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
+	public Persona(String d, String n, String a) {
+		this.dni = d;
+		this.nombre = n;
+		this.apellido = a;
 	}
 
 	public String getNombre() {
