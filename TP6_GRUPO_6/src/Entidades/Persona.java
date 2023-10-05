@@ -1,8 +1,6 @@
 package Entidades;
 
-import java.util.Objects;
-
-public class Persona implements Comparable<Persona> {
+public class Persona {
 	
 	private String dni;
 	private String nombre;
@@ -44,18 +42,8 @@ public class Persona implements Comparable<Persona> {
 
 	@Override
 	public String toString() {
-		return dni + " - " + nombre + " - " + apellido;
+		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + "]";
 	}
-    @Override
-    public int hashCode() {
-        return Objects.hash(dni);
-    }
-
-	@Override
-	 public int compareTo(Persona otraPersona) {
-       
-        return this.dni.compareTo(otraPersona.dni);
-    }
 	
 	
 }

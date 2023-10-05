@@ -50,7 +50,4 @@ public class PanelListarPersonas extends JPanel {
 		));
 		scrollPane.setViewportView(jtListaPersonas);
 	}
-	public JTable getjtListaPersonas() {
-		return jtListaPersonas;
-	}
 }
