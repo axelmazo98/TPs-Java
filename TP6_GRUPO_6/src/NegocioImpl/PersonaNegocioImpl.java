@@ -37,6 +37,33 @@ public class PersonaNegocioImpl implements IPersonaNegocio {
 		}
 	}
 	@Override
+	public String delete(Persona persona) {
+		String mensaje;
+		if(dao.delete(persona)) {
+			return mensaje = "Persona eliminada con éxito";
+		}
+		else return mensaje = "No se pudo eliminar a la persona";
+	}
+
+	@Override
+	public String modify(Persona persona) {
+	    String mensaje;
+	    boolean estado = false;
+	    
+	    if (persona.getNombre().trim().length() > 0 && persona.getApellido().trim().length() > 0) {
+	        estado = dao.modify(persona); 
+	        if (estado) {
+	            mensaje = "Persona modificada correctamente";
+	        } else {
+	            mensaje = "No se pudo modificar a la persona";
+	        }
+	    } else {
+	        mensaje = "Complete todos los campos";
+	    }
+
+	    return mensaje;
+	}
+	@Override
 	public boolean existeDNI(String dni) {
 		ArrayList<Persona> pList= new ArrayList<Persona>();
 		pList=dao.ReadALL();
