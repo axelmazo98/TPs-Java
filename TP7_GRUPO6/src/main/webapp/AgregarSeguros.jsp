@@ -9,7 +9,7 @@
 
 <body>
 
-	<a href="Inicio.jsp">Inicio &nbsp;</a> <a href="AgregarSeguros.jsp">Agregar Seguros &nbsp;</a><br> <br> <br>
+	<a href="Inicio.jsp">Inicio &nbsp;</a> <a href="AgregarSeguros.jsp">Agregar Seguros &nbsp;</a> <a href="ListarSeguros.jsp"> Listar Seguros &nbsp;</a><br> <br> <br>
 		Id Seguro: ultimoId <br> <br>
 		Descripción: <input type= 'text' name= 'txtDescripcion' required></input> <br> <br>
 		Tipo Seguro: <select name='ddlTipoSeguro'> 

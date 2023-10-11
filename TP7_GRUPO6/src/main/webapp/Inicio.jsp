@@ -7,7 +7,7 @@
 <title>Inicio</title>
 </head>
 <body>
-	<a href="Inicio.jsp">Inicio &nbsp;</a> <a href="AgregarSeguros.jsp">Agregar Seguros &nbsp;</a>
+	<a href="Inicio.jsp">Inicio &nbsp;</a> <a href="AgregarSeguros.jsp">Agregar Seguros &nbsp;</a> <a href="ListarSeguros.jsp"> Listar Seguros &nbsp;</a>
 	<div>
 		<b>Soy página de inicio</b>
 	</div>
