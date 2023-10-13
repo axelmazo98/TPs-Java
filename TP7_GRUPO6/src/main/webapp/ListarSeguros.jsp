@@ -24,11 +24,14 @@
 	<a href="Inicio.jsp">Inicio &nbsp;</a> <a href="AgregarSeguros.jsp">Agregar Seguros &nbsp;</a> <a href='ListarSeguros.jsp'> Listar Seguros &nbsp;</a><br> <br> <br>
 	
 	<h1>Tipo de seguros en la base de datos</h1>
-    <label for="seguroDropdown">Búsqueda de tipo de seguros:</label>
-    <select id="seguroDropdown">
+	<form method="get">
+	<label for="seguroDropdown">Búsqueda de tipo de seguros:</label>
+    <select name="seguros">
         <option value="seguroCasas">Seguro de casas</option>
     </select>
-    <button id="filtrarButton">Filtrar</button>
+    <input type="submit" name="btnFiltrar" value="Filtrar"/>
+	</form>
+    
     
     <table>
         <tr>
