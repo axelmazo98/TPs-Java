@@ -2,16 +2,15 @@ package dominio;
 
 public class tipoSeguro{
 
-	int IdTipo;
-	String Descripcion;
+	private int IdTipo;
+	private String Descripcion;
 	
 	public tipoSeguro() {
 	}
 
 	public tipoSeguro(int idTipo, String descripcion) {
-		super();
-		IdTipo = idTipo;
-		Descripcion = descripcion;
+		this.IdTipo = idTipo;
+		this.Descripcion = descripcion;
 	}
 
 	public int getIdTipo() {
@@ -19,7 +18,7 @@ public class tipoSeguro{
 	}
 
 	public void setIdTipo(int idTipo) {
-		IdTipo = idTipo;
+		this.IdTipo = idTipo;
 	}
 
 	public String getDescripcion() {
@@ -27,7 +26,7 @@ public class tipoSeguro{
 	}
 
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+		this.Descripcion = descripcion;
 	}
 
 	@Override
@@ -37,3 +36,5 @@ public class tipoSeguro{
 	
 	
 }
+
+
