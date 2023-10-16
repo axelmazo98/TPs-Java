@@ -7,6 +7,9 @@ public class tipoSeguro{
 	
 	public tipoSeguro() {
 	}
+	public tipoSeguro(int id) {
+		this.IdTipo=id;
+	}
 
 	public tipoSeguro(int idTipo, String descripcion) {
 		this.IdTipo = idTipo;

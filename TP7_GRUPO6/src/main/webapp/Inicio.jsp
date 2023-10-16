@@ -7,9 +7,20 @@
 <title>Inicio</title>
 </head>
 <body>
-	<a href="Inicio.jsp">Inicio &nbsp;</a> <a href="AgregarSeguros.jsp">Agregar Seguros &nbsp;</a> <a href="ListarSeguros.jsp"> Listar Seguros &nbsp;</a>
+
+	<a href="Inicio.jsp">Inicio</a>
+	<a href="ServletSeguros?Param=cargarTipo">Agregar seguro</a>
+	<a href="ServletSeguros?Param=listarSeguros">Listar seguros</a>
 	<div>
 		<b>Soy página de inicio</b>
 	</div>
+	
+	<%
+		if (request.getAttribute("estado") != null) {
+	%>
+	Articulo agregado con exito
+	<%
+		}
+	%>
 </body>
 </html>

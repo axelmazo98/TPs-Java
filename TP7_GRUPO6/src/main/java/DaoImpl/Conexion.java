@@ -1,4 +1,4 @@
-package datosImpl;
+package DaoImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,12 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class conexion {
+
+public class Conexion {
+
 
 	private String host = "jdbc:mysql://localhost:3306/";
 	private String user = "root";
 	private String pass = "root";
-	private String dbName = "segurosgroup??profileSQL=true&useSSL=false";
+	private String dbName = "segurosgroup?useSSL=false";
 
 	protected Connection connection;
 	
