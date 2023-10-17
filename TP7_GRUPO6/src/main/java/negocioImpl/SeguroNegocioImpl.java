@@ -1,5 +1,6 @@
 package negocioImpl;
 
+import java.util.List;
 import DaoImpl.seguroDaoImpl;
 import dominio.Seguro;
 import negocio.ISeguroNegocio;
@@ -19,5 +20,11 @@ public class SeguroNegocioImpl implements ISeguroNegocio {
 		int id= segDao.getUltimoId()+1;
 		return id;
 	}
-
+	
+	public List<Seguro> getSeguros(){
+		
+		List<Seguro> list = segDao.getSeguros();
+		
+		return list;
+	}
 }

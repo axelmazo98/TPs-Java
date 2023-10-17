@@ -4,8 +4,8 @@ public class Seguro {
 	private int ID;
 	private String Descripcion;
 	private tipoSeguro Tipo;
-	private float costoContratacion;
-	private float costoMaximo;
+	private double costoContratacion;
+	private double costoMaximo;
 	
 	public Seguro() {
 		
@@ -42,15 +42,15 @@ public class Seguro {
 		this.Tipo = tipo;
 	}
 
-	public float getCostoContratacion() {
+	public double getCostoContratacion() {
 		return costoContratacion;
 	}
 
-	public void setCostoContratacion(float costoContratacion) {
+	public void setCostoContratacion(double costoContratacion) {
 		this.costoContratacion = costoContratacion;
 	}
 
-	public float getCostoMaximo() {
+	public double getCostoMaximo() {
 		return costoMaximo;
 	}
 

@@ -1,6 +1,8 @@
-package presentacion.controller;
+package servlet;
 
+import java.io.Console;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,31 +36,35 @@ public class ServletSeguros extends HttpServlet {
 		
 		if(request.getParameter("Param")!=null) {
 			
-			String opcion=request.getParameter("Param").toString();
+			String opcion=request.getParameter("Param").toString();	
 			
-			switch (opcion) {
-			case "cargarTipo":
-		
-				request.setAttribute("cargar" ,tipoNegocio.listarTipos());
-				request.setAttribute("id", segNegocio.getProximoId());
-					
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/AgregarSeguro.jsp");
-				dispatcher.forward(request, response);
-				break;
-
-			case "listarSeguros":
-				
-				RequestDispatcher dispa = request.getRequestDispatcher("/ListarSeguros.jsp");
-				dispa.forward(request, response);
-				break;
-			default:
-				break;
-			}
-			
-			
-			
+			  switch (opcion) { 
+			  
+				  case "cargarTipo":
+				  
+					  request.setAttribute("cargar" ,tipoNegocio.listarTipos());
+					  request.setAttribute("id", segNegocio.getProximoId());
+					  
+					  RequestDispatcher dispatcher =
+					  request.getRequestDispatcher("/AgregarSeguro.jsp");
+					  dispatcher.forward(request, response); 
+					  break;
+				  
+				  case "listarSeguros":
+				  
+					  SeguroNegocioImpl seguroNegocioImpl = new SeguroNegocioImpl(); List<Seguro>
+					  list = seguroNegocioImpl.getSeguros();
+					  
+					  request.setAttribute("listSeguros", list);
+					  
+					  RequestDispatcher dispa = request.getRequestDispatcher("/ListarSeguros.jsp");
+					  dispa.forward(request, response);
+					  break; 
+				 default: 
+					 break;
+			  }
+			 	
 		}
-		
 		
 	}
 
