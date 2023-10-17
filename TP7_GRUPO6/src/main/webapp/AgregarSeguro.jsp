@@ -50,8 +50,8 @@
 		
 		</select> <br> <br>
 			
-		Costo Contratación: <input type= 'text' name= 'txtCostoContratacion'></input> <br> <br>
-		Costo Máximo Asegurado: <input type= 'text' name= 'txtCostoMaximoAsegurado'></input> <br> <br>
+		Costo Contratación: <input type="number" min="0" name= 'txtCostoContratacion' required></input> <br> <br>
+		Costo Máximo Asegurado: <input type="number" min="0" name= 'txtCostoMaximoAsegurado' required></input> <br> <br>
 		<button type='submit' name=btnAceptar style="width: 120px;">Aceptar</button>
 		
 		</form>
