@@ -26,10 +26,10 @@
 </head>
 <body>
 <% 
-	List<tipoSeguro> listaTipos=new ArrayList<tipoSeguro> ();
+	ArrayList<tipoSeguro> listaTipos=new ArrayList<tipoSeguro> ();
 	
 	if(request.getAttribute("cargar2")!=null){
-		listaTipos = (List<tipoSeguro>)request.getAttribute("cargar2");
+		listaTipos = (ArrayList<tipoSeguro>)request.getAttribute("cargar2");
 	}
 %>
 	

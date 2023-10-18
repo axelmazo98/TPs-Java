@@ -2,10 +2,11 @@ package negocio;
 
 
 import java.util.List;
+import java.util.ArrayList;
 
 import dominio.tipoSeguro;
 
 public interface ITipoSeguroNegocio {
 
-	public List<tipoSeguro> listarTipos();
+	public ArrayList<tipoSeguro> listarTipos();
 }

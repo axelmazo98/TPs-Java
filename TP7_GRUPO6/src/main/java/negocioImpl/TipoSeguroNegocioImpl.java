@@ -2,6 +2,7 @@ package negocioImpl;
 
 
 import java.util.List;
+import java.util.ArrayList;
 
 import DaoImpl.TipoSeguroDaoImpl;
 import negocio.ITipoSeguroNegocio;
@@ -13,9 +14,9 @@ public class TipoSeguroNegocioImpl implements ITipoSeguroNegocio {
 	private TipoSeguroDaoImpl tipoDao= new TipoSeguroDaoImpl();
 	
 	@Override
-	public List<tipoSeguro> listarTipos() {
+	public ArrayList<tipoSeguro> listarTipos() {
 		//Aca nose que iriia, calculo que validaciones
-		List<tipoSeguro> lista=tipoDao.listarTipos();
+		ArrayList<tipoSeguro> lista=tipoDao.listarTipos();
 		return lista;
 	}
 

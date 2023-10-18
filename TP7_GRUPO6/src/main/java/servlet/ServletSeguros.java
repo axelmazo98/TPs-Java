@@ -72,6 +72,7 @@ public class ServletSeguros extends HttpServlet {
 			SeguroNegocioImpl seguroNegocioImpl = new SeguroNegocioImpl(); List<Seguro>
 			list = seguroNegocioImpl.getSegurosFiltro(Integer.parseInt(request.getParameter("ddlTipoSeguro")));
 			request.setAttribute("listSeguros", list);
+			request.setAttribute("cargar2", tipoNegocio.listarTipos());
 			RequestDispatcher dp= request.getRequestDispatcher("/ListarSeguros.jsp");
 			dp.forward(request,response);
 			

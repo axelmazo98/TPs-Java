@@ -111,7 +111,7 @@ public class seguroDaoImpl implements IseguroDao {
 		ArrayList<Seguro> list = new ArrayList<Seguro>();
 		cn=new Conexion();
 		cn.Open();
-		String query ="select seguros.idSeguro, seguros.descripcion, tiposeguros.idTipo, tiposeguros.descripcion, seguros.costoContratacion, "
+		String query ="select seguros.idSeguro, seguros.descripcion, tiposeguros.idTipo, tiposeguros.descripcion as TipoDescripcion, seguros.costoContratacion, "
 		 		+ "seguros.costoAsegurado FROM seguros INNER JOIN tiposeguros ON seguros.idTipo = tiposeguros.IdTipo "
 		 		+ "where seguros.idTipo = " + tipo;
 		try {
@@ -126,7 +126,7 @@ public class seguroDaoImpl implements IseguroDao {
 				seguro.setID(rs.getInt("idSeguro"));
 				seguro.setDescripcion(rs.getString("descripcion"));
 				tipoSeguro.setIdTipo(rs.getInt("idTipo"));
-				tipoSeguro.setDescripcion(rs.getString("descripcion"));
+				tipoSeguro.setDescripcion(rs.getString("TipoDescripcion"));
 				seguro.setTipo(tipoSeguro);
 				seguro.setCostoContratacion(rs.getDouble("costoContratacion"));
 				seguro.setCostoMaximo(rs.getFloat("costoAsegurado"));

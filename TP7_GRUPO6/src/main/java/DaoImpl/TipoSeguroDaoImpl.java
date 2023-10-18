@@ -12,9 +12,9 @@ public class TipoSeguroDaoImpl implements ITipoSeguroDao {
 	private Conexion cn;
 	
 	@Override
-	public List<tipoSeguro> listarTipos() {
+	public ArrayList<tipoSeguro> listarTipos() {
 		
-		List<tipoSeguro> lista= new ArrayList<tipoSeguro>();
+		ArrayList<tipoSeguro> lista= new ArrayList<tipoSeguro>();
 		cn= new Conexion();
 		cn.Open();
 		
