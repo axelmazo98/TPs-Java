@@ -42,15 +42,17 @@
 	<form method="get" action="ServletSeguros">
 		<label for="seguroDropdown">Búsqueda de tipo de seguros:</label>
 	    <select name="ddlTipoSeguro">
-	    			<%
+	    	<%
 			if(listaTipos!=null){
+			%>
+				<option value="0">Selecciona Tipo Seguro</option>
+				<%
 				for(tipoSeguro tipo : listaTipos){
-					%>
+				%>
 				<option value="<%=tipo.getIdTipo()%>"><%=tipo.getDescripcion() %> </option>
-				<%	
-				}
-			}
-		%>
+				<%}%>
+			<%}%>
+				
 	    </select>
 		<input type="submit" name="btnFiltrar" value="Filtrar"/>
 	</form>

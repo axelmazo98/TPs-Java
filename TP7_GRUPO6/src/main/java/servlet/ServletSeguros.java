@@ -34,49 +34,59 @@ public class ServletSeguros extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		int value = 0;
+		String opcion ="";
+		if(request.getParameter("btnFiltrar")!=null){
+			value = Integer.parseInt(request.getParameter("ddlTipoSeguro"));
+			
+			if(value == 0) {
+				opcion = "listarSeguros";
+			}
+			else {
+				opcion = "Filtrar";
+			}
+		}
 		if(request.getParameter("Param")!=null) {
 			
-			String opcion=request.getParameter("Param").toString();	
-			
-			  switch (opcion) { 
+			opcion=request.getParameter("Param").toString();	
+		}
+		
+		switch (opcion) { 
+		  
+		  case "cargarTipo":
+		  
+			  request.setAttribute("cargar" ,tipoNegocio.listarTipos());
+			  request.setAttribute("id", segNegocio.getProximoId());
 			  
-				  case "cargarTipo":
-				  
-					  request.setAttribute("cargar" ,tipoNegocio.listarTipos());
-					  request.setAttribute("id", segNegocio.getProximoId());
-					  
-					  RequestDispatcher dispatcher =
-					  request.getRequestDispatcher("/AgregarSeguro.jsp");
-					  dispatcher.forward(request, response); 
-					  break;
-				  
-				  case "listarSeguros":
-				  
-					  SeguroNegocioImpl seguroNegocioImpl = new SeguroNegocioImpl(); List<Seguro>
-					  list = seguroNegocioImpl.getSeguros();
-					  
-					  request.setAttribute("listSeguros", list);
-					  request.setAttribute("cargar2", tipoNegocio.listarTipos());
-					  
-					  RequestDispatcher dispa = request.getRequestDispatcher("/ListarSeguros.jsp");
-					  dispa.forward(request, response);
-					  break; 
-				  default:
-						 break;
-			  }
-			 	
-		}
-		if(request.getParameter("btnFiltrar")!=null)
-		{
-			SeguroNegocioImpl seguroNegocioImpl = new SeguroNegocioImpl(); List<Seguro>
-			list = seguroNegocioImpl.getSegurosFiltro(Integer.parseInt(request.getParameter("ddlTipoSeguro")));
-			request.setAttribute("listSeguros", list);
-			request.setAttribute("cargar2", tipoNegocio.listarTipos());
-			RequestDispatcher dp= request.getRequestDispatcher("/ListarSeguros.jsp");
-			dp.forward(request,response);
-			
-		}
+			  RequestDispatcher dispatcher =
+			  request.getRequestDispatcher("/AgregarSeguro.jsp");
+			  dispatcher.forward(request, response); 
+			  break;
+		  
+		  case "listarSeguros":
+		  
+			  SeguroNegocioImpl seguroNegocioImpl = new SeguroNegocioImpl(); 
+			  List<Seguro> list = seguroNegocioImpl.getSeguros();
+			  
+			  request.setAttribute("listSeguros", list);
+			  request.setAttribute("cargar2", tipoNegocio.listarTipos());
+			  
+			  RequestDispatcher dispa = request.getRequestDispatcher("/ListarSeguros.jsp");
+			  dispa.forward(request, response);
+			  break; 
+			  
+		  case "Filtrar":
+			  	SeguroNegocioImpl seguroNegocioImpl1 = new SeguroNegocioImpl();
+			  	List<Seguro> lista = seguroNegocioImpl1.getSegurosFiltro(value);
+				request.setAttribute("listSeguros", lista);
+				request.setAttribute("cargar2", tipoNegocio.listarTipos());
+				RequestDispatcher dp= request.getRequestDispatcher("/ListarSeguros.jsp");
+				dp.forward(request,response);
+			  break;
+			  
+		  default:
+				 break;
+	  }
 		
 	}
 
