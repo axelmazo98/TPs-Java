@@ -27,4 +27,11 @@ public class SeguroNegocioImpl implements ISeguroNegocio {
 		
 		return list;
 	}
+
+	public List<Seguro> getSegurosFiltro(int tipo){
+		
+		List<Seguro> list = segDao.getSegurosFiltro(tipo);
+		
+		return list;
+	}
 }

@@ -1,4 +1,6 @@
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="dominio.tipoSeguro" %>
 <%@page import="dominio.Seguro"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -23,14 +25,32 @@
     </style>
 </head>
 <body>
-	<a href="Inicio.jsp">Inicio &nbsp;</a> <a href="AgregarSeguro.jsp">Agregar Seguros &nbsp;</a> <a href='ListarSeguros.jsp'> Listar Seguros &nbsp;</a><br> <br> <br>
+<% 
+	List<tipoSeguro> listaTipos=new ArrayList<tipoSeguro> ();
+	
+	if(request.getAttribute("cargar2")!=null){
+		listaTipos = (List<tipoSeguro>)request.getAttribute("cargar2");
+	}
+%>
+	
+	<a href="Inicio.jsp">Inicio &nbsp;</a> 
+	<a href="ServletSeguros?Param=cargarTipo">Agregar seguro</a>
+	<a href="ServletSeguros?Param=listarSeguros">Listar segurso</a><br> <br> <br>
 	
 	<h1>Tipo de seguros en la base de datos</h1>
 	
 	<form method="get" action="ServletSeguros">
 		<label for="seguroDropdown">Búsqueda de tipo de seguros:</label>
-	    <select name="seguros">
-	        <option value="seguroCasas">Seguro de casas</option>
+	    <select name="ddlTipoSeguro">
+	    			<%
+			if(listaTipos!=null){
+				for(tipoSeguro tipo : listaTipos){
+					%>
+				<option value="<%=tipo.getIdTipo()%>"><%=tipo.getDescripcion() %> </option>
+				<%	
+				}
+			}
+		%>
 	    </select>
 		<input type="submit" name="btnFiltrar" value="Filtrar"/>
 	</form>

@@ -12,7 +12,7 @@ public class Conexion {
 
 	private String host = "jdbc:mysql://localhost:3306/";
 	private String user = "root";
-	private String pass = "admin";//root
+	private String pass = "root";//root
 	private String dbName = "segurosgroup?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 
 	protected Connection connection;

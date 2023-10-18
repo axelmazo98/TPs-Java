@@ -106,6 +106,44 @@ public class seguroDaoImpl implements IseguroDao {
 			
 			return lista;
 	}
+	public ArrayList<Seguro> getSegurosFiltro(int tipo)
+	{
+		ArrayList<Seguro> list = new ArrayList<Seguro>();
+		cn=new Conexion();
+		cn.Open();
+		String query ="select seguros.idSeguro, seguros.descripcion, tiposeguros.idTipo, tiposeguros.descripcion, seguros.costoContratacion, "
+		 		+ "seguros.costoAsegurado FROM seguros INNER JOIN tiposeguros ON seguros.idTipo = tiposeguros.IdTipo "
+		 		+ "where seguros.idTipo = " + tipo;
+		try {
+			
+			ResultSet rs=cn.query(query);
+			
+			while (rs.next()) {
+				
+				Seguro seguro = new Seguro();
+				tipoSeguro tipoSeguro = new tipoSeguro();
+				
+				seguro.setID(rs.getInt("idSeguro"));
+				seguro.setDescripcion(rs.getString("descripcion"));
+				tipoSeguro.setIdTipo(rs.getInt("idTipo"));
+				tipoSeguro.setDescripcion(rs.getString("descripcion"));
+				seguro.setTipo(tipoSeguro);
+				seguro.setCostoContratacion(rs.getDouble("costoContratacion"));
+				seguro.setCostoMaximo(rs.getFloat("costoAsegurado"));
+				
+				list.add(seguro);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			cn.close();
+		}
+		
+		return list;
+	}
 
 	
 }
